@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The IAM Project</title>
+  <link rel="stylesheet" href="/theiamproject/styles.css">
+</head>
+<body>
+  <header>
+    <h1>The IAM Project</h1>
+    <nav><a href="/">Home</a><a href="/main/">Main</a><a href="/theiamproject/">The IAM Project</a><a href="/admin/">Admin</a></nav>
+  </header>
+  <main>
+    <section>
+      <h2>Newsletter</h2>
+      <form data-lead-form data-source="iam-newsletter" data-action="subscribe">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe</button>
+        <p class="form-status"></p>
+      </form>
+    </section>
+    <section>
+      <h2>Contact</h2>
+      <form data-lead-form data-source="iam-contact" data-action="contact">
+        <div class="form-row"><input type="text" name="firstName" placeholder="First name" required><input type="text" name="lastName" placeholder="Last name"></div>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone">
+        <button type="submit">Send</button>
+        <p class="form-status"></p>
+      </form>
+    </section>
+    <section>
+      <h2>Get Started</h2>
+      <form data-lead-form data-source="iam-cta" data-action="cta">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Get Started</button>
+        <p class="form-status"></p>
+      </form>
+    </section>
+  </main>
+  <footer><p>2026 The IAM Project.</p></footer>
+  <script src="/lead-form.js"></script>
+</body>
+</html>

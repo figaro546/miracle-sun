@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+    <nav><a href="/">Home</a><a href="/main/">Main</a><a href="/theiamproject/">The IAM Project</a><a href="/admin/">Admin</a></nav>
+  </header>
+  <main>
+    <section>
+      <h2>Stats</h2>
+      <div id="stats">Loading…</div>
+    </section>
+    <section>
+      <h2>Recent Events</h2>
+      <div id="events">Loading…</div>
+    </section>
+  </main>
+  <footer><p>2026 Miracle Sun.</p></footer>
+  <script>
+    const token = prompt('Enter admin password:');
+    if (token) {
+      fetch('/api/admin/stats', { headers: { Authorization: 'Bearer ' + token } })
+        .then(r => r.json()).then(data => {
+          document.getElementById('stats').innerHTML = '<p>Page Views: ' + data.pageViews + '</p><p>Form Submissions: ' + data.formSubmissions + '</p><p>Clicks: ' + data.clicks + '</p><h3>Top Pages</h3><ul>' + data.topPages.map(p => '<li>' + p.path + ': ' + p.c + '</li>').join('') + '</ul>';
+        }).catch(() => { document.getElementById('stats').textContent = 'Error loading stats'; });
+      fetch('/api/admin/events?limit=20', { headers: { Authorization: 'Bearer ' + token } })
+        .then(r => r.json()).then(data => {
+          document.getElementById('events').innerHTML = '<table border="1" cellpadding="5"><tr><th>Type</th><th>Host</th><th>Path</th><th>IP</th><th>Date</th></tr>' + data.events.map(e => '<tr><td>' + e.type + '</td><td>' + e.host + '</td><td>' + e.path + '</td><td>' + e.ip + '</td><td>' + e.created_at + '</td></tr>').join('') + '</table>';
+        }).catch(() => { document.getElementById('events').textContent = 'Error loading events'; });
+    }
+  </script>
+</body>
+</html>

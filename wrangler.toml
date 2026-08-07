@@ -1,0 +1,11 @@
+name = "miracle-sun"
+main = "src/index.js"
+compatibility_date = "2026-08-04"
+
+[assets]
+directory = "./assets"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "miraclesun-db"
+database_id = "5134d3c9-1e55-4535-9e5a-dcdd64011b28"
